@@ -68,9 +68,7 @@ frappe.ui.Sidebar = class Sidebar {
 			} else {
 				let app_name = frappe.boot.module_app[this.workspace_title];
 				if (app_name) {
-					let app_title = frappe.boot.app_data.find((f) => {
-						return f.app_name == app_name;
-					}).app_title;
+					let app_title = frappe.boot.app_data.find((f) => f.app_name == app_name)?.app_title ?? app_name;
 					this.header_subtitle = app_title;
 				} else {
 					this.header_subtitle = frappe.session.user;
@@ -539,9 +537,9 @@ frappe.ui.Sidebar = class Sidebar {
 
 		return new frappe.ui.sidebar_item[class_name](opts);
 	}
-	update_item(item, index) {}
+	update_item(item, index) { }
 
-	remove_item(item, index) {}
+	remove_item(item, index) { }
 
 	toggle_width() {
 		if (!this.sidebar_expanded) {
